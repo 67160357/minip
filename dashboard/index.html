@@ -1,0 +1,71 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WattWise · เรื่องเล่าจากบิลค่าไฟ</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="data.js"></script>
+<style>
+:root{--navy:#12304A;--mint:#21C7A8;--bg:#F5F8FA;--ink:#334155;--warn:#F59E0B}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Prompt,Inter,sans-serif}
+.w{max-width:960px;margin:auto;padding:0 20px}
+header{background:var(--navy);color:#fff;padding:44px 0}
+header h1{margin:0 0 6px;font-size:2.1rem;font-weight:600}header p{margin:0;color:#A7ECDD}
+header img{height:56px;background:#fff;border-radius:8px;padding:4px 10px;margin-bottom:18px}
+section{padding:40px 0;border-bottom:1px solid #E2E8F0}
+h2{color:var(--navy);font-weight:600;font-size:1.5rem;margin:0 0 4px;line-height:1.4}
+.ch{color:var(--mint);font-weight:600;font-size:.9rem}
+.k{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}
+.c{background:#fff;border-radius:10px;padding:14px 16px;border:1px solid #E2E8F0}
+.c b{display:block;font:600 1.6rem Inter;color:var(--navy)}.c span{font-size:.85rem}
+.c.a{border-left:4px solid var(--warn)}.c.a b{color:var(--warn)}
+.box{background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px;height:320px}
+.n{font-size:.85rem;color:#64748B;margin:10px 0 0}
+footer{padding:24px 0;font-size:.85rem;color:#64748B}
+</style></head><body>
+<header><div class="w"><img src="../assets/logo-brand-slide.png" alt="WattWise"><h1>บ้านหนึ่งหลัง กับบิลค่าไฟที่ไม่มีใครอธิบายได้</h1><p>รู้ทันไฟ ใช้ทันคุ้ม · เรื่องเล่า 30 วันจากอุปกรณ์ NILM ของ WattWise</p></div></header>
+<main class="w">
+<section><div class="ch">ตอนที่ 1 · ปัญหา</div><h2 id="h1"></h2><div class="k" id="k1"></div><p class="n">บิลบอกแค่ยอดรวม ไม่บอกว่าเครื่องไหนกินไฟ</p></section>
+<section><div class="ch">ตอนที่ 2 · สิ่งที่ค้นพบ</div><h2 id="h2"></h2><div class="box"><canvas id="c1"></canvas></div><p class="n">WattWise แยกเครื่องใช้ไฟฟ้าจากจุดวัดเดียวที่ตู้เบรกเกอร์ ไม่ต้องเสียบปลั๊กทีละเครื่อง</p></section>
+<section><div class="ch">ตอนที่ 3 · พฤติกรรม</div><h2 id="h3"></h2><div class="box"><canvas id="c2"></canvas></div></section>
+<section><div class="ch">ตอนที่ 4 · สัญญาณเตือน</div><h2 id="h4"></h2><div class="box"><canvas id="c3"></canvas></div><div class="k" id="k4"></div></section>
+<section><div class="ch">ตอนที่ 5 · คุณค่าต่อลูกค้า</div><h2 id="h5"></h2><div class="k" id="k5"></div><p class="n">สมมติฐาน: ซ่อมแอร์ให้กลับสู่ระดับปกติ และปรับพฤติกรรมลดการใช้ไฟรวม 10% หลังเห็นข้อมูล</p></section>
+<section><div class="ch">ตอนที่ 6 · โมเดลธุรกิจ</div><h2 id="h6"></h2><div class="box"><canvas id="c4"></canvas></div><p class="n">ฮาร์ดแวร์ 3,500 บาท/ชุด · ซับสคริปชัน 149 บาท/เดือน (ลูกค้า 40%) · ติดตั้งและข้อมูลเชิงลึก B2B</p></section>
+<section><div class="ch">ตอนที่ 7 · สิ่งที่ต้องระวัง</div><h2>ความเสี่ยงหลักจาก SWOT</h2>
+<div class="k"><div class="c"><b style="font-size:1.1rem">ความแม่นยำของ AI</b><span>เครื่องใช้ไฟฟ้ารุ่นใหม่ที่ไม่อยู่ในฐานข้อมูลอาจแยกผิด</span></div>
+<div class="c"><b style="font-size:1.1rem">มาตรฐานความปลอดภัย</b><span>ต้องผ่าน มอก./CE เพราะติดตั้งในตู้เบรกเกอร์</span></div>
+<div class="c"><b style="font-size:1.1rem">รายใหญ่เข้าตลาด</b><span>การไฟฟ้าและผู้ผลิตสมาร์ทมิเตอร์อาจทำฟีเจอร์เดียวกัน</span></div></div></section>
+</main>
+<footer><div class="w">ข้อมูลทั้งหมดเป็นข้อมูลจำลองเพื่อการเรียน สร้างจาก scripts/make_data.py (seed คงที่) · สมมติฐานอยู่ใน README</div></footer>
+<script>
+const D=DATA,T=D.tariff,N=D.names,sum=a=>a.reduce((x,y)=>x+y,0),avg=a=>sum(a)/a.length,f=n=>Math.round(n).toLocaleString('en-US');
+const tot=N.map(n=>sum(D.daily[n])),all=sum(tot),ac=D.daily[N[0]];
+const base=avg(ac.slice(0,20)),recent=avg(ac.slice(-10)),up=recent/base-1;
+const excess=(recent-base)*30,save=(excess+all*.1)*T,pb=D.hw/save;
+let cu=0;const cum=D.biz.map(r=>cu+=r.profit),be=cum.findIndex(x=>x>0)+1,y3=D.biz[2];
+const hr=Array.from({length:24},(_,h)=>sum(N.map(n=>D.hourly[n][h]))),pk=hr.indexOf(Math.max(...hr));
+const $=id=>document.getElementById(id),t=(id,s)=>$(id).textContent=s;
+const kpi=(id,a)=>$(id).innerHTML=a.map(([v,l,w])=>`<div class="c${w?' a':''}"><b>${v}</b><span>${l}</span></div>`).join('');
+t('h1',`ค่าไฟ 30 วันล่าสุด ${f(all*T)} บาท แต่ไม่รู้ว่าใครกินไฟ`);
+kpi('k1',[[f(all),'หน่วยไฟ (kWh)'],[f(all*T),'ค่าไฟ (บาท)'],[(all/30).toFixed(1),'kWh ต่อวัน']]);
+t('h2',`แอร์กินไฟ ${Math.round(tot[0]/all*100)}% ของทั้งบ้าน`);
+t('h3',`ไฟพุ่งสูงสุดตอน ${String(pk).padStart(2,'0')}:00 น. ที่ ${hr[pk].toFixed(1)} kW`);
+t('h4',`แอร์เริ่มกินไฟเพิ่ม ${Math.round(up*100)}% ใน 10 วันล่าสุด`);
+kpi('k4',[['+'+Math.round(up*100)+'%','เทียบค่าเฉลี่ย 20 วันแรก',1],[f(excess),'kWh ที่เสียเพิ่มต่อเดือน',1],['ตรวจก่อนพัง','Predictive Maintenance แจ้งเตือนล่วงหน้า']]);
+t('h5',`ประหยัดได้ประมาณ ${f(save)} บาท/เดือน คืนทุนเครื่องใน ${pb.toFixed(1)} เดือน`);
+kpi('k5',[[f(save),'บาท/เดือน ที่ประหยัดได้'],[f(D.hw),'บาท ราคาอุปกรณ์'],[pb.toFixed(1)+' เดือน','ระยะคืนทุนของลูกค้า']]);
+t('h6',`ปีที่ 3 รายได้ ${(y3.revenue/1e6).toFixed(1)} ล้านบาท กำไรสะสมเป็นบวกในปีที่ ${be}`);
+Chart.defaults.font.family='Inter,Prompt,sans-serif';Chart.defaults.color='#334155';
+const P=['#12304A','#21C7A8','#4A7BA7','#8FD9CB','#94A3B8','#CBD5E1'];
+const mk=(id,type,data,o={})=>new Chart($(id),{type,data,options:{maintainAspectRatio:false,...o}});
+mk('c1','doughnut',{labels:N,datasets:[{data:tot.map(x=>+x.toFixed(1)),backgroundColor:P}]},{plugins:{legend:{position:'right'}}});
+mk('c2','line',{labels:[...Array(24).keys()].map(h=>h+':00'),datasets:N.map((n,i)=>({label:n,data:D.hourly[n],backgroundColor:P[i],borderColor:P[i],fill:true,pointRadius:0}))},{scales:{y:{stacked:true,title:{display:true,text:'kW'}}}});
+mk('c3','line',{labels:D.dates.map(d=>d.slice(5)),datasets:[
+{label:'แอร์ (kWh/วัน)',data:ac,borderColor:'#21C7A8',segment:{borderColor:c=>c.p0DataIndex>=19?'#F59E0B':'#21C7A8'},pointRadius:2},
+{label:'ค่าปกติ',data:ac.map(()=>+base.toFixed(2)),borderColor:'#94A3B8',borderDash:[6,4],pointRadius:0}]});
+const B=D.biz,m=k=>B.map(r=>r[k]/1e6);
+mk('c4','bar',{labels:B.map(r=>'ปีที่ '+r.year),datasets:[
+{label:'ฮาร์ดแวร์',data:m('hardware'),backgroundColor:P[0]},{label:'ซับสคริปชัน',data:m('saas'),backgroundColor:P[1]},
+{label:'ติดตั้ง',data:m('install'),backgroundColor:P[3]},{label:'ข้อมูลเชิงลึก B2B',data:m('insights'),backgroundColor:P[4]},
+{type:'line',label:'กำไรสุทธิ',data:m('profit'),borderColor:'#F59E0B',backgroundColor:'#F59E0B'}]},
+{scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'ล้านบาท'}}}});
+</script></body></html>
